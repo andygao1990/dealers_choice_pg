@@ -17,6 +17,7 @@ app.get('/', async (req, res, next) => {
             </head>
             <body>
                 <h1>Book World</h1>
+                <h2>Books</h2>
                 <ul>
                 ${
                     books.map( book => `
@@ -36,6 +37,31 @@ app.get('/', async (req, res, next) => {
         next(ex)
     }
 })
+
+app.get('/books/:id', async (req, res, next) => {
+    try {
+        const response = await client.query('SELECT * FROM book WHERE id=$1', [req.params.id])
+        const book = response.rows[0]
+        res.send(`
+        <html>
+            <head>
+            <link rel='stylesheet' href='/assets/styles.css' />
+            </head>
+            <body>
+                <h1>Book World</h1>
+                <h2><a href='/'>Books</a> (${book.name}) </h2>
+                <p>
+                    ${book.content}
+                </p>
+            </body>
+        </html>
+        `)
+    }
+    catch (ex) {
+        next(ex)
+    }
+})
+
 
 const port = process.env.PORT || 3000
 

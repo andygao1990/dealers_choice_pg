@@ -7,13 +7,14 @@ const syncAndSeed = async () => {
         DROP TABLE IF EXISTS book;
         CREATE TABLE book (
             id INTEGER PRIMARY KEY,
-            name VARCHAR (100) NOT NULL
+            name VARCHAR (100) NOT NULL,
+            content TEXT NOT NULL
         );
-      INSERT INTO book (id, name) VALUES (1, 'Book 1');
-      INSERT INTO book (id, name) VALUES (2, 'Book 2');
-      INSERT INTO book (id, name) VALUES (3, 'Book 3');
-      INSERT INTO book (id, name) VALUES (4, 'Book 4');
-      INSERT INTO book (id, name) VALUES (5, 'Book 5');
+      INSERT INTO book (id, name, content) VALUES (1, 'Book 1', 'This is book 1!');
+      INSERT INTO book (id, name, content) VALUES (2, 'Book 2', 'This is book 2!');
+      INSERT INTO book (id, name, content) VALUES (3, 'Book 3', 'This is book 3!');
+      INSERT INTO book (id, name, content) VALUES (4, 'Book 4', 'This is book 4!');
+      INSERT INTO book (id, name, content) VALUES (5, 'Book 5', 'This is book 5!');
     `;
 
     await client.query(SQL);

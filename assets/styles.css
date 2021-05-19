@@ -1,4 +1,10 @@
 body {
     font-family: verdana;
     padding: 1rem;
+    background-color: beige;
+}
+
+h1 {
+    font-family: cursive;
+    color: dimgrey;
 }
